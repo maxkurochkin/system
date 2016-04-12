@@ -1,0 +1,79 @@
+.window {
+    position: absolute;
+    overflow: hidden;
+    background-color: #ffffff;
+    border: 3px solid #343434;
+    font-family: arial, verdana;
+    font-size: 14px;
+    font-weight: bold;
+    color: #343434;
+    border-radius: 4px;
+}
+.window .window-top {
+    overflow: hidden;
+    background-color: #c1c1c1;
+    border-bottom: 1px solid #343434;
+    cursor: move;
+}
+.window.active .window-top {
+    background-color: #dbffa9;
+}
+.window .window-main {
+    position: relative;
+}
+.window .window-bottom {
+    overflow: hidden;
+    background-color: #343434;
+    border-top: 1px solid #343434;
+}
+.window .window-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.window .window-shield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.window .window-title {
+    float: left;
+    padding: 5px;
+    color: #343434;
+}
+.window .window-close,
+.window .window-refresh,
+.window .window-resize {
+    width: 25px;
+    background-color: #343434;
+    text-align: center;
+    color: #ffffff;
+}
+.window .window-close {
+    float: right;
+    padding: 4px 5px 6px 8px;
+    cursor: pointer;
+}
+.window .window-close:hover {
+    color: #ff9393;
+}
+.window .window-refresh {
+    float: left;
+    padding: 6px 8px 4px 5px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.window .window-refresh:hover {
+    color: #dbff38;
+}
+.window .window-resize {
+    float: right;
+    padding: 6px 5px 4px 8px;
+    color: #737373;
+    cursor: nw-resize;
+}
