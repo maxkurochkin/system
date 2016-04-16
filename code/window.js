@@ -1,4 +1,9 @@
 var WindowClass = function(id, url) {
+    var startOffsetX = Math.random() * settings.START_WINDOW_OFFSET * 2;
+    var startOffsetY = Math.random() * settings.START_WINDOW_OFFSET * 2;
+    startOffsetX = Math.round(startOffsetX - settings.START_WINDOW_OFFSET);
+    startOffsetY = Math.round(startOffsetY - settings.START_WINDOW_OFFSET);
+
     var privateObject = {
         id: id,
         url: url,
@@ -6,8 +11,8 @@ var WindowClass = function(id, url) {
         tab: TabClass(id),
         container: null,
         position: { 
-            x: settings.START_WINDOW_X,
-            y: settings.START_WINDOW_Y 
+            x: settings.START_WINDOW_X + startOffsetX,
+            y: settings.START_WINDOW_Y + startOffsetY
         },
         size: { 
             x: settings.START_WINDOW_WIDTH,
@@ -20,12 +25,12 @@ var WindowClass = function(id, url) {
 
     var object = {
         preMovePosition: {
-            x: settings.START_WINDOW_X,
-            y: settings.START_WINDOW_Y
+            x: privateObject.position.x,
+            y: privateObject.position.y
         },
         preResizeSize: {
-            x: settings.START_WINDOW_WIDTH,
-            y: settings.START_WINDOW_HEIGHT
+            x: privateObject.size.x,
+            y: privateObject.size.y
         },
         getId: function() {
             return privateObject.id;
@@ -70,8 +75,8 @@ var WindowClass = function(id, url) {
 
     privateObject.container = document.createElement('div');
     privateObject.container.setAttribute('class', 'window');
-    privateObject.container.style['left'] = settings.START_WINDOW_X + 'px';
-    privateObject.container.style['top'] = settings.START_WINDOW_Y + 'px';
+    privateObject.container.style['left'] = privateObject.position.x + 'px';
+    privateObject.container.style['top'] = privateObject.position.y + 'px';
     privateObject.container.style['z-index'] = privateObject.layer;
     system.windowsContainer.appendChild(privateObject.container);
 
@@ -81,8 +86,8 @@ var WindowClass = function(id, url) {
 
     privateObject.main.container = document.createElement('div');
     privateObject.main.container.setAttribute('class', 'window-main');
-    privateObject.main.container.style['width'] = settings.START_WINDOW_WIDTH + 'px';
-    privateObject.main.container.style['height'] = settings.START_WINDOW_HEIGHT + 'px';
+    privateObject.main.container.style['width'] = privateObject.size.x + 'px';
+    privateObject.main.container.style['height'] = privateObject.size.y + 'px';
     privateObject.container.appendChild(privateObject.main.container);
 
     privateObject.bottom.container = document.createElement('div');

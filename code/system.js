@@ -1,6 +1,7 @@
 var SystemClass = function(container) {
     var privateObject = {
         windows: [],
+        shortcuts: [],
         getNewWindowId: function() {
             var newWindowId = 0;
             while (true) {
@@ -51,6 +52,7 @@ var SystemClass = function(container) {
 
     var object = {
         windowsContainer: container,
+        shortcutsContainer: null,
         tabsContainer: null,
         exitButton: null,
         mouse: {
@@ -58,6 +60,10 @@ var SystemClass = function(container) {
             currentWindowId: null,
             isWindowMoveAction: false,
             isWindowResizeAction: false
+        },
+        createShortcut: function(url, name, image) {
+            var newShortcut = ShortcutClass(url, name, image);
+            privateObject.shortcuts.push(newShortcut);
         },
         createWindow: function(url) {
             if (privateObject.windows.length < settings.MAX_WINDOW_COUNT) {
@@ -105,6 +111,10 @@ var SystemClass = function(container) {
             privateObject.resetWindowListStates();
         }
     };
+
+    object.shortcutsContainer = document.createElement('div');
+    object.shortcutsContainer.setAttribute('id', 'shortcuts');
+    object.windowsContainer.appendChild(object.shortcutsContainer);
 
     object.tabsContainer = document.createElement('div');
     object.tabsContainer.setAttribute('id', 'tabs');
