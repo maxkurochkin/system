@@ -34,7 +34,7 @@
     float: left;
     padding: 5px 15px;
     background-color: #c1c1c1;
-    border-radius: 6px;
+    border-radius: 4px;
 }
 #tabs .tab.active .tab-title {
     background-color: #dbffa9;
